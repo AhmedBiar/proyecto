@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --main-d: #062033;
+  --comp-d: #130f10;
+  --text-d: white;
+}
+
+/* Estilos body, nav, aside */
+.main {
+  @apply bg-[var(--main-d)] min-h-[100dvh] flex flex-col overflow-y-auto overflow-x-hidden;
+}
+.nav {
+  @apply flex items-center justify-between bg-black h-[10vh] px-4 z-50 relative;
+}
+
+.nav-button {
+  @apply p-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors;
+}
+.card {
+  @apply  w-[20%] h-[25%] mx-2 my-2 p-2 rounded-md border border-solid border-black  text-center hover:-translate-y-1 shadow-lg shadow-blue-500
+ bg-blue-600  text-slate-900 justify-items-center space-x-2;
+}
+.card img{
+  @apply w-[250px] ;
+}
+.aside {
+  @apply fixed top-[10vh] left-0 h-[90vh] w-64 bg-gray-800 text-white transform transition-transform duration-300 ease-in-out z-40;
+}
+.aside-open {
+  @apply translate-x-0;
+}
+
+.aside-closed {
+  @apply -translate-x-full;
+}
+
+.aside h2 {
+  @apply text-xl font-bold mb-4 p-4;
+}
+
+.aside li {
+  @apply flex items-center gap-2 p-4;
+}
+
+.aside li:hover {
+  @apply text-cyan-400;
+}
+
+.aside-logOff {
+  @apply text-red-700;
+}
+
+.aside .aside-logOff:hover {
+  @apply text-pink-400;
+}
+
+
+.main-content {
+  @apply flex flex-col items-center justify-start w-full h-[calc(100vh-10vh)] ml-0 md:ml-64 p-4 text-white;
+}
+
+
+.nav-item {
+  @apply relative text-white text-lg font-semibold tracking-wide transition-all duration-300 sticky;
+}
+
+.nav-item:hover {
+  @apply text-cyan-300 scale-125;
+}
+
+/* Estilos Login centrado */
+.login-container {
+  @apply flex flex-col items-center justify-center h-screen bg-[var(--main-d)] h-full w-full p-0;
+}
+
+.login-title {
+  @apply text-3xl font-bold text-white mb-6 m-8;
+}
+
+.login-form {
+  @apply bg-gray-700 p-6 rounded shadow-md w-full max-w-sm flex flex-col gap-4;
+}
+
+.login-label {
+  @apply flex flex-col text-white;
+}
+
+.login-input {
+  @apply mt-1 p-2 rounded text-black;
+}
+
+.login-button {
+  @apply bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded transition-colors;
+}
+
+.logOff-button {
+  @apply bg-red-600 hover:bg-red-700 text-white font-semibold py-2 rounded transition-colors;
+}
+/*Estilos screen */
+.screen-content {
+  @apply flex flex-row justify-center items-start gap-10 min-h-[80vh] w-full flex;
+}
+.img-screen {
+  @apply w-full max-w-3xl h-[400px] object-cover rounded-lg shadow-md hover:scale-110;
+}
+
+.op-div {
+  @apply grid grid-cols-2 gap-6 w-full max-w-3xl;
+}
+
+.op {
+  @apply text-3xl bg-slate-400 text-center py-6 rounded-lg hover:bg-slate-500 cursor-pointer w-full;
+}
+.op-fallo{
+  @apply text-3xl bg-red-600 text-center py-6 rounded-lg hover:bg-red-700 cursor-pointer w-full;
+}
+.op-bloqueada{
+  @apply text-3xl text-white bg-black text-center py-6 hover:bg-gray-800 rounded-lg cursor-pointer w-full;
+}
+.op-correcta{
+  @apply text-3xl text-white bg-green-600 animate-pulse text-center py-6 rounded-lg cursor-pointer w-full;
+}
+.sidePanel {
+  @apply mt-8 bg-slate-700 p-4 rounded-md text-center shadow-md h-[35%] text-white flex flex-col items-center justify-start gap-4;
+}
+.div-reloj{
+  @apply   mt-8 bg-slate-700 p-4 rounded-md text-center shadow-md h-[20%] text-white flex flex-col items-center justify-start gap-4;
+}
+.titulo-reloj{
+  @apply text-white font-medium text-lg;
+}
+.siguiente {
+  @apply bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded mt-4 transition;
+}
+.resetButton {
+  @apply m-2 bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded mt-4 transition;
+}
+.reportButton {
+  @apply m-2 bg-yellow-600 hover:bg-yellow-700 text-white font-semibold py-2 px-4 rounded mt-4 transition;
+}
+
+.resetDB {
+  @apply m-2 bg-violet-600 hover:bg-violet-700 text-white font-semibold py-2 px-4 rounded mt-4 transition;
+}
+
+.juego-columna {
+  @apply flex flex-col items-center justify-center gap-6 w-[70%] m-5;
+}
+.conTiempo{
+  @apply hidden;
+}
+.sinTiempo{
+  @apply font-medium text-red-600;
+}
