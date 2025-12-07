@@ -11,16 +11,26 @@ export default function Juego({ isLogged, handleLogout }) {
   const [imgURL, setImgURL] = useState(null);
   const[pais, setPais]= useState(null);
 
-  async function getRandomIMG(){
-    let urlIMG="https://server-nk4j.onrender.com/ubicaciones";
-    let res= await fetch(urlIMG);
-    let datos = await res.json();
-    if (!res.ok) console.log(`Error al obtener datos: ${res.status}`);
+async function getRandomIMG() {
+  try {
+    
+    const res = await fetch("https://server-nk4j.onrender.com/ubicaciones");
+    if (!res.ok) throw new Error(`Error al obtener datos: ${res.status}`);
 
-    let randomNum= Math.floor(Math.random() * datos.length);
-    let img= datos[randomNum];
-    return img.url;
+    const datos = await res.json();
+
+    
+    const randomNum = Math.floor(Math.random() * datos.length);
+    const img = datos[randomNum];
+
+    
+    return `https://server-nk4j.onrender.com/img/${img.id}`;
+  } catch (err) {
+    console.error(err);
+    return null; 
   }
+}
+
   async function getPais(url){
     let urlIMG="https://server-nk4j.onrender.com/ubicaciones";
     let res= await fetch(urlIMG);
