@@ -10,7 +10,7 @@ export default function Screen({ imgURL, paisCorrecto }) {
 
   useEffect(() => {
   async function cargarStats() {
-    const res = await fetch("http://localhost:3000/estadisticas/1");
+    const res = await fetch("https://server-nk4j.onrender.com/estadisticas/1");
     const data = await res.json();
     setStats(data);
   }
@@ -27,7 +27,7 @@ export default function Screen({ imgURL, paisCorrecto }) {
         ? { aciertos: stats.aciertos + 1, fallos: stats.fallos }
         : { aciertos: stats.aciertos,fallos: stats.fallos + 1 };
 
-    const res = await fetch("http://localhost:3000/estadisticas/1", {
+    const res = await fetch("https://server-nk4j.onrender.com/estadisticas/1", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(nuevosDatos),
@@ -42,7 +42,7 @@ export default function Screen({ imgURL, paisCorrecto }) {
   }
   async function resetearDatos(){
     const datos= { aciertos:0, fallos: 0 };
-     const res = await fetch("http://localhost:3000/estadisticas/1", {
+     const res = await fetch("https://server-nk4j.onrender.com/estadisticas/1", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(datos),
@@ -55,7 +55,7 @@ export default function Screen({ imgURL, paisCorrecto }) {
     }
   }
   async function generarPaisRandom(paisCorrecto, yaElegidos = []) {
-    const res = await fetch("http://localhost:3000/ubicaciones");
+    const res = await fetch("https://server-nk4j.onrender.com/ubicaciones");
     const datos = await res.json();
     if (!res.ok) console.log(`Error al obtener datos: ${res.status}`);
 
@@ -150,12 +150,12 @@ export default function Screen({ imgURL, paisCorrecto }) {
   }
   async function reindexarUbicaciones() {
     // console.log("Entro en la reindexación");
-    const res = await fetch("http://localhost:3000/ubicaciones");
+    const res = await fetch("https://server-nk4j.onrender.com/ubicaciones");
     if(!res.ok) return console.log("Error: al obtener los datos, en la reindexación");
     const datos = await res.json();
     
     for (let i = 0; i < datos.length; i++) {
-      await fetch(`http://localhost:3000/ubicaciones/${datos[i].id}`, {
+      await fetch(`https://server-nk4j.onrender.com/ubicaciones/${datos[i].id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: String(i + 1) }),
@@ -163,12 +163,12 @@ export default function Screen({ imgURL, paisCorrecto }) {
     }
 }
   async function reportarImagen(){
-    /* const res = await fetch("http://localhost:3000/ubicaciones");
+    /* const res = await fetch("https://server-nk4j.onrender.com/ubicaciones");
     if(!res.ok) return console.log("Error: al obtener los datos");
     const datos = await res.json();
     let idImg= datos.find(d=> d.url === imgURL);
     if(!idImg) return console.log("Imagen no encontrada");
-    const url= `http://localhost:3000/ubicaciones/${idImg.id}`;
+    const url= `https://server-nk4j.onrender.com/ubicaciones/${idImg.id}`;
     const eliminarImg= await fetch(url,{ method: 'DELETE' });
     if(eliminarImg.ok){
       console.log("IMG eliminada exitosamente");
@@ -186,13 +186,13 @@ export default function Screen({ imgURL, paisCorrecto }) {
 
     const reserva = await resReserva.json();  
 
-    const resIMG = await fetch("http://localhost:3000/ubicaciones");
+    const resIMG = await fetch("https://server-nk4j.onrender.com/ubicaciones");
     if (!resIMG.ok) return console.log(`error: ${resIMG.status}`);
 
     const dataIMG = await resIMG.json();
 
     for (let i = 0; i < dataIMG.length; i++) {
-      const url = `http://localhost:3000/ubicaciones/${dataIMG[i].id}`;
+      const url = `https://server-nk4j.onrender.com/ubicaciones/${dataIMG[i].id}`;
       const eliminarImg = await fetch(url, { method: "DELETE" });
 
       if (!eliminarImg.ok)
@@ -200,7 +200,7 @@ export default function Screen({ imgURL, paisCorrecto }) {
     }
 
     for (let i = 0; i < reserva.ubicaciones.length; i++) {
-      await fetch("http://localhost:3000/ubicaciones", {
+      await fetch("https://server-nk4j.onrender.com/ubicaciones", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(reserva.ubicaciones[i]),

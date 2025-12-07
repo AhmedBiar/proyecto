@@ -12,7 +12,7 @@ export default function Juego({ isLogged, handleLogout }) {
   const[pais, setPais]= useState(null);
 
   async function getRandomIMG(){
-    let urlIMG="http://localhost:3000/ubicaciones";
+    let urlIMG="https://server-nk4j.onrender.com/ubicaciones";
     let res= await fetch(urlIMG);
     let datos = await res.json();
     if (!res.ok) console.log(`Error al obtener datos: ${res.status}`);
@@ -22,7 +22,7 @@ export default function Juego({ isLogged, handleLogout }) {
     return img.url;
   }
   async function getPais(url){
-    let urlIMG="http://localhost:3000/ubicaciones";
+    let urlIMG="https://server-nk4j.onrender.com/ubicaciones";
     let res= await fetch(urlIMG);
     let datos = await res.json();
     if (!res.ok) console.log(`Error al obtener datos: ${res.status}`);
