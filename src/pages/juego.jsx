@@ -24,7 +24,7 @@ async function getRandomIMG() {
     const img = datos[randomNum];
 
     
-    return `https://server-nk4j.onrender.com/img/${img.id}`;
+    return `https://server-nk4j.onrender.com/img/${img}`;
   } catch (err) {
     console.error(err);
     return null; 
